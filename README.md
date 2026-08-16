@@ -1,39 +1,25 @@
-# Netflix FP&A Model & Variance Analysis
+# Financial Analyst Portfolio
 
-A driver-based revenue forecast, scenario model, and quarterly variance analysis for Netflix, built entirely from public SEC filings (8-K shareholder letters, 10-Qs, 10-K).
+FP&A-focused analysis built from public company filings and datasets: driver-based forecasting, variance analysis, operational dashboards, and DCF valuation.
 
-## Business Question
+I'm targeting FP&A and financial analyst roles. These three projects are meant to show how I think about turning raw financial and operational data into a decision an executive could actually act on, not just a model or a chart.
 
-How would an internal FP&A team forecast Netflix's revenue and operating income by region, and how should that forecast be revised once actual results come in?
+## Projects
 
-## Method
+### 1. [Netflix FP&A Model & Variance Analysis](./netflix-fpa-analysis)
+A driver-based revenue forecast (subscribers times ARPU by region) built from Netflix's 10-K/10-Q/8-K filings, with a quarterly variance bridge comparing forecast to actuals and a board-style narrative memo. This is the core FP&A deliverable in the portfolio, closest to what an internal finance team produces each quarter.
 
-- **Revenue Build:** Regional revenue (UCAN, EMEA, LATAM, APAC) modeled off YoY growth rates rather than subscriber × ARPU, since Netflix discontinued regional subscriber/ARPU disclosure after Q3 2025. The model adapts to that reporting change rather than forcing stale inputs.
-- **Historical tab:** 21 quarters of actuals (Q1'21 to Q1'26) sourced directly from filings, adjusted for Netflix's November 2025 10-for-1 stock split, with a one-time $2.8B non-operating item (the Warner Bros. Discovery merger termination fee, Q1'26), flagged separately so it doesn't distort operating trends.
-- **Scenario tab:** Base/Bull/Bear toggle for growth and margin assumptions, feeding directly into the Revenue Build and P&L tabs.
-- **Variance tab:** Compares the Base-case forecast to Netflix's actual Q2'26 results (reported July 16, 2026), with a full revenue-by-region bridge and an operating income bridge separating the revenue effect from the margin effect.
+### 2. [Hospital Utilization Dashboard](./hospital-utilization-dashboard)
+A Power BI dashboard analyzing inpatient utilization trends, built to answer a capacity-planning question: which regions are seeing the fastest growth in demand, and what does that imply for staffing and budget. Framed around resource-planning implications rather than visualization for its own sake.
 
-## Headline Finding: Q2'26 Forecast vs. Actual
+### 3. [ExxonMobil DCF Valuation](./exxonmobil-dcf)
+A discounted cash flow model estimating ExxonMobil's fair value, cross-checked against a relative valuation (EV/EBITDA, P/E, dividend yield) versus Chevron and Shell, with a written investment thesis. A supporting project rounding out the modeling range into corporate/equity finance.
 
-| | Forecast (Base) | Actual | Variance |
-|---|---|---|---|
-| Total Revenue | $12,707M | $12,560M | ($147M), -1.2% |
-| Operating Margin | 30.0% | 33.4% | +3.4pp |
-| Operating Income | $3,812M | $4,193M | +$381M, +10.0% |
+## Approach
 
-Revenue missed across UCAN, EMEA, and APAC, and was only partly offset by LATAM outperforming (+3.6%, the second straight quarter LATAM beat forecast). Despite the revenue miss, operating income beat by $381M, and the bridge shows that beat came **entirely from margin, not revenue**. The revenue shortfall cost about $44M of profit, while margin outperformance added $425M, netting the full $381M beat.
+Each project folder includes:
+- A README with the business question, method, headline finding, and recommendation
+- The underlying model or dashboard file
+- Where applicable, a written memo or thesis with the full analysis
 
-## Recommendation
-
-1. **Don't carry the 33.4% margin forward.** Netflix's own shareholder letter attributes the beat to favorable expense timing, not a structural improvement. Q3'26–Q1'27 margin assumptions should stay near the trailing average rather than being raised off one strong quarter.
-2. **Revisit UCAN and APAC growth assumptions.** Both regions have missed forecast by a widening margin for several quarters running. This reads as a persistent trend, not a one-off miss, and should be reflected in the Q3'26 forecast.
-3. **Hold or raise the LATAM growth assumption.** LATAM is now two-for-two beating forecast and remains the fastest-growing region.
-
-## Files
-
-- `netflix_fpa_model.xlsx`: full model (Cover, Assumptions, Historical, Revenue Build, P&L, Scenario, Variance, Dashboard tabs)
-- `Q2_26_Variance_Memo.pdf`: full written variance memo
-
-## Sources
-
-Netflix Inc. 8-K shareholder letters, 10-Q, and 10-K filings, SEC EDGAR.
+All data is sourced from public filings (SEC EDGAR), company disclosures, or public datasets, cited in each project's README.
