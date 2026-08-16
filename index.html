@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matthew Franklin, FP&A & Financial Analyst</title>
+<meta name="description" content="Portfolio of Matthew Franklin: FP&A modeling, financial analytics, and valuation projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EDF1EA;
+    --paper-raised: #F6F8F3;
+    --ink: #1F2B24;
+    --ink-soft: #4A5A4F;
+    --rule: #C3CDBC;
+    --rule-strong: #97A38F;
+    --brass: #9C7A3C;
+    --brass-soft: #C7AD79;
+    --pos: #2F6E4F;
+    --neg: #A5402F;
+    --max-w: 920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--brass-soft); color:var(--ink);}
+  a{color:inherit;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 28px;}
+  .mono{font-family:'IBM Plex Mono', monospace; font-variant-numeric:tabular-nums;}
+  .display{font-family:'Fraunces', serif;}
+
+  /* Faint ledger rule texture on body */
+  body{
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 37px,
+      rgba(151,163,143,0.16) 38px
+    );
+  }
+
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,241,234,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:var(--max-w); margin:0 auto; padding:16px 28px;
+  }
+  .nav-mark{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; letter-spacing:0.01em;
+  }
+  .nav-links{display:flex; gap:26px; list-style:none; margin:0; padding:0; font-size:0.88rem;}
+  .nav-links a{text-decoration:none; color:var(--ink-soft); position:relative; padding-bottom:3px;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--brass);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+
+  /* HERO */
+  .hero{padding:76px 0 40px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--brass); margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--brass);}
+  h1.name{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(2.6rem, 6vw, 4.1rem);
+    line-height:1.02; margin:0 0 14px; letter-spacing:-0.01em;
+  }
+  .role-line{
+    font-size:1.15rem; color:var(--ink-soft); max-width:56ch; margin:0 0 34px;
+  }
+  .role-line strong{color:var(--ink); font-weight:600;}
+
+  /* Ledger stat row with leader lines */
+  .stat-row{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:0;
+    border-top:1px solid var(--rule-strong); border-bottom:1px solid var(--rule-strong);
+    margin-bottom:8px;
+  }
+  .stat{
+    padding:16px 18px; border-right:1px solid var(--rule);
+  }
+  .stat:last-child{border-right:none;}
+  .stat-label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--ink-soft); margin-bottom:6px;
+  }
+  .stat-value a{text-decoration:none; border-bottom:1px solid var(--rule-strong);}
+  .stat-value a:hover{border-color:var(--brass); color:var(--brass);}
+  .stat-value{font-size:0.98rem; font-weight:500;}
+
+  section{padding:64px 0;}
+  .section-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:8px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace; color:var(--brass-soft); font-size:0.85rem;
+  }
+  h2.section-title{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.7rem; margin:0;
+  }
+  .section-rule{border:none; border-top:1px solid var(--rule-strong); margin:14px 0 34px;}
+  .section-intro{color:var(--ink-soft); max-width:64ch; margin:-18px 0 36px;}
+
+  /* Leader-line list, used for About summary facts */
+  .leader-list{list-style:none; margin:0 0 8px; padding:0;}
+  .leader-list li{
+    display:flex; align-items:baseline; gap:8px; padding:9px 0;
+    border-bottom:1px dotted var(--rule-strong);
+  }
+  .leader-list .k{color:var(--ink-soft); font-size:0.92rem; white-space:nowrap;}
+  .leader-list .fill{flex:1; border-bottom:1px dotted var(--rule); position:relative; top:-4px;}
+  .leader-list .v{font-size:0.92rem; text-align:right; font-weight:500;}
+
+  /* PROJECT CARDS */
+  .project{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    margin-bottom:28px;
+    overflow:hidden;
+  }
+  .project-head{
+    padding:22px 26px 18px; border-bottom:1px solid var(--rule);
+    display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;
+  }
+  .project-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--brass); margin-bottom:8px;
+  }
+  h3.project-title{font-family:'Fraunces', serif; font-size:1.35rem; font-weight:600; margin:0 0 6px;}
+  .project-q{color:var(--ink-soft); font-size:0.96rem; max-width:58ch;}
+  .project-body{padding:20px 26px 26px;}
+  .project-body p{margin:0 0 14px; font-size:0.96rem;}
+  .project-body p:last-of-type{margin-bottom:0;}
+
+  table.figures{
+    width:100%; border-collapse:collapse; margin:16px 0 20px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.84rem;
+  }
+  table.figures th, table.figures td{
+    text-align:right; padding:8px 10px; border-bottom:1px solid var(--rule);
+  }
+  table.figures th:first-child, table.figures td:first-child{text-align:left; color:var(--ink-soft); font-weight:400;}
+  table.figures thead th{
+    color:var(--ink-soft); font-weight:500; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em;
+    border-bottom:1px solid var(--rule-strong);
+  }
+  .pos{color:var(--pos);}
+  .neg{color:var(--neg);}
+
+  .finding{
+    background:var(--paper); border-left:2px solid var(--brass);
+    padding:12px 16px; margin:16px 0; font-size:0.92rem;
+  }
+  .finding strong{color:var(--ink);}
+
+  .project-links{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; text-decoration:none;
+    padding:9px 14px; border:1px solid var(--rule-strong); color:var(--ink);
+    transition:all .18s ease; border-radius:2px;
+  }
+  .btn:hover{border-color:var(--brass); color:var(--brass); background:rgba(156,122,60,0.06);}
+  .btn.primary{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  .btn.primary:hover{background:var(--brass); border-color:var(--brass); color:var(--paper);}
+
+  /* SKILLS */
+  .skills-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;}
+  .skill-group h4{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--brass); margin:0 0 12px;
+  }
+  .skill-group ul{list-style:none; margin:0; padding:0;}
+  .skill-group li{
+    padding:7px 0; border-bottom:1px dotted var(--rule-strong); font-size:0.92rem;
+  }
+
+  /* EXPERIENCE mini */
+  .exp-item{padding:16px 0; border-bottom:1px solid var(--rule);}
+  .exp-item:last-child{border-bottom:none;}
+  .exp-top{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:4px;}
+  .exp-role{font-weight:600;}
+  .exp-org{color:var(--ink-soft); font-size:0.9rem;}
+  .exp-time{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft); white-space:nowrap;}
+  .exp-item p{margin:6px 0 0; font-size:0.92rem; color:var(--ink-soft); max-width:66ch;}
+
+  /* RESUME / CONTACT */
+  .resume-band{
+    background:var(--ink); color:var(--paper);
+    padding:52px 0; margin-top:20px;
+  }
+  .resume-band .wrap{display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;}
+  .resume-band h2{font-family:'Fraunces', serif; font-size:1.6rem; margin:0 0 8px; font-weight:600;}
+  .resume-band p{margin:0; color:#B9C4B4; font-size:0.94rem;}
+  .resume-band .btn{border-color:#4A5A4F; color:var(--paper);}
+  .resume-band .btn:hover{border-color:var(--brass-soft); color:var(--brass-soft); background:rgba(199,173,121,0.08);}
+  .resume-band .btn.primary{background:var(--brass); border-color:var(--brass); color:var(--ink);}
+  .resume-band .btn.primary:hover{background:var(--brass-soft); border-color:var(--brass-soft);}
+
+  footer{padding:36px 0 50px;}
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+    font-size:0.84rem; color:var(--ink-soft);
+    border-top:1px solid var(--rule); padding-top:20px;
+  }
+  .foot-links{display:flex; gap:18px; list-style:none; margin:0; padding:0;}
+  .foot-links a{text-decoration:none; border-bottom:1px solid transparent;}
+  .foot-links a:hover{border-color:var(--brass); color:var(--brass);}
+
+  [data-reveal]{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:640px){
+    .nav-links{gap:16px; font-size:0.8rem;}
+    .stat-row{grid-template-columns:1fr; }
+    .stat{border-right:none; border-bottom:1px solid var(--rule);}
+    .stat:last-child{border-bottom:none;}
+    .skills-grid{grid-template-columns:1fr;}
+    table.figures{font-size:0.74rem;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    [data-reveal]{opacity:1; transform:none; transition:none;}
+  }
+  a:focus-visible, button:focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="nav">
+    <div class="nav-mark">M. Franklin</div>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div class="eyebrow">FP&amp;A &amp; Financial Analyst Candidate</div>
+    <h1 class="name">Matthew Franklin</h1>
+    <p class="role-line">Economics student building <strong>driver-based forecasts, variance analysis, and valuation models</strong> from public financial data, the same toolkit an internal FP&amp;A team uses to turn numbers into a decision.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-label">Location</div>
+        <div class="stat-value">Los Angeles, CA</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Education</div>
+        <div class="stat-value">B.A. Economics, Cal Lutheran, Dec 2026</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Contact</div>
+        <div class="stat-value"><a href="mailto:matthewfranklin01@gmail.com">matthewfranklin01@gmail.com</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-top:8px; padding-bottom:8px;">
+    <p style="max-width:68ch; color:var(--ink-soft); font-size:0.96rem;">
+      Four-plus years across financial services, operations, and organizational finance, including a 40% year-over-year client base expansion at Northwestern Mutual and management of a $20K+ chapter budget as Treasurer of Delta Sigma Pi. The three projects below apply that same analytical approach to public company data: forecasting, explaining variance, and valuing a business.
+    </p>
+  </div>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Projects</h2>
+      </div>
+      <hr class="section-rule">
+
+      <!-- PROJECT 1: NETFLIX -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">FP&amp;A Modeling &middot; Variance Analysis</div>
+            <h3 class="project-title">Netflix FP&amp;A Model &amp; Variance Analysis</h3>
+            <p class="project-q">How should a forecast be revised once actual results come in, and what actually drove the difference?</p>
+          </div>
+        </div>
+        <div class="project-body">
+          <p>A driver-based revenue forecast and scenario model built from Netflix's SEC filings (10-K, 10-Q, 8-K shareholder letters), with a full Q2'26 forecast-vs-actual variance bridge across four regions.</p>
+
+          <table class="figures">
+            <thead>
+              <tr><th>Q2'26</th><th>Forecast</th><th>Actual</th><th>Variance</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Total Revenue</td><td>$12,707M</td><td>$12,560M</td><td class="neg">($147M) &minus;1.2%</td></tr>
+              <tr><td>Operating Margin</td><td>30.0%</td><td>33.4%</td><td class="pos">+3.4pp</td></tr>
+              <tr><td>Operating Income</td><td>$3,812M</td><td>$4,193M</td><td class="pos">+$381M +10.0%</td></tr>
+            </tbody>
+          </table>
+
+          <div class="finding"><strong>Finding:</strong> the $381M operating income beat came entirely from margin, not revenue. The revenue miss cost about $44M in profit, while margin outperformance added $425M. Netflix attributes the margin strength to favorable expense timing, so the model does not carry it forward into future quarters.</div>
+
+          <p>Recommendation: hold Q3'26&ndash;Q1'27 margin assumptions near trailing average, revisit UCAN/APAC growth assumptions given a multi-quarter slowdown, and hold or raise the LATAM growth assumption after two straight quarters of outperformance.</p>
+
+          <div class="project-links">
+            <a class="btn primary" href="projects/netflix-fpa-analysis/netflix-fpa-model.xlsx">Download model (.xlsx)</a>
+            <a class="btn" href="projects/netflix-fpa-analysis/q2-26-variance-memo.pdf">Read variance memo (PDF)</a>
+            <a class="btn" href="https://github.com/MatthewFranklin8/financial-analyst-portfolio/tree/main/projects/netflix-fpa-analysis">View on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2: FINANCE EXPENSE DASHBOARD -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">Power BI &middot; DAX &middot; Data Modeling</div>
+            <h3 class="project-title">Finance &amp; Performance Analysis Dashboard</h3>
+            <p class="project-q">Where is company spending concentrated, and how does income compare to expenses over time?</p>
+          </div>
+        </div>
+        <div class="project-body">
+          <p>An interactive Power BI dashboard built on cleaned transaction-level data, with DAX measures for income, expenses, and net cashflow, and slicers by company, account, and date.</p>
+
+          <table class="figures">
+            <thead>
+              <tr><th>2023</th><th>Result</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Net Cash Flow</td><td class="pos">+$64.4K</td></tr>
+              <tr><td>Months Income &gt; Expenses</td><td>12 / 12</td></tr>
+              <tr><td>Highest Spending Days</td><td>Weekends</td></tr>
+            </tbody>
+          </table>
+
+          <div class="finding"><strong>Finding:</strong> income exceeded expenses in every month of 2023, and spending is evenly distributed across categories, accounts, and companies rather than concentrated in a few outliers, aside from a consistent weekend spending spike.</div>
+
+          <div class="project-links">
+            <a class="btn primary" href="projects/finance-expense-dashboard/finance-expense-dashboard.pbix">Download dashboard (.pbix)</a>
+            <a class="btn" href="projects/finance-expense-dashboard/dashboard-notes.pdf">Read project notes (PDF)</a>
+            <a class="btn" href="https://github.com/MatthewFranklin8/financial-analyst-portfolio/tree/main/projects/finance-expense-dashboard">View on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 3: EXXONMOBIL DCF -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">DCF Valuation &middot; Relative Valuation</div>
+            <h3 class="project-title">ExxonMobil DCF Valuation</h3>
+            <p class="project-q">Is ExxonMobil stock worth what it is currently trading at?</p>
+          </div>
+        </div>
+        <div class="project-body">
+          <p>A five-year discounted cash flow model (8.20% WACC, 2.50% terminal growth) cross-checked against a relative valuation versus Chevron and Shell.</p>
+
+          <table class="figures">
+            <thead>
+              <tr><th>Company</th><th>P/E</th><th>Dividend Yield</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>ExxonMobil (XOM)</td><td>~20.6x</td><td>~2.6%</td></tr>
+              <tr><td>Chevron (CVX)</td><td>~18.9x</td><td>~3.6%</td></tr>
+              <tr><td>Shell (SHEL)</td><td>~12.4x</td><td>~3.5%</td></tr>
+            </tbody>
+          </table>
+
+          <div class="finding"><strong>Finding:</strong> the DCF estimates fair value at roughly $132/share, below the trading price, and the relative valuation points the same direction; ExxonMobil trades at the highest multiple and lowest yield of the three. Sensitivity to WACC and terminal growth is wide ($98&ndash;$201), so the conclusion is read as directional, not a precise target.</div>
+
+          <p>As of August 2026, the Strait of Hormuz shipping disruption from the Middle East conflict is the largest near-term factor for ExxonMobil's results, larger than any single modeling assumption.</p>
+
+          <div class="project-links">
+            <a class="btn primary" href="projects/exxonmobil-dcf/exxonmobil-dcf-model.xlsb">Download model (.xlsb)</a>
+            <a class="btn" href="projects/exxonmobil-dcf/exxonmobil-investment-thesis.pdf">Read investment thesis (PDF)</a>
+            <a class="btn" href="https://github.com/MatthewFranklin8/financial-analyst-portfolio/tree/main/projects/exxonmobil-dcf">View on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <hr class="section-rule">
+      <div class="skills-grid" data-reveal>
+        <div class="skill-group">
+          <h4>Technical</h4>
+          <ul>
+            <li>Advanced Excel (financial modeling, pivot tables, VBA, V-lookups)</li>
+            <li>Power BI &amp; Tableau</li>
+            <li>SQL</li>
+            <li>Salesforce &amp; Microsoft Dynamics 365</li>
+            <li>AI-assisted analysis (ChatGPT, Copilot, Claude)</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Analytical &amp; Reporting</h4>
+          <ul>
+            <li>Dashboard creation &amp; data analysis</li>
+            <li>Financial reporting &amp; variance analysis</li>
+            <li>ROI &amp; risk analysis</li>
+            <li>Process improvement</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Business</h4>
+          <ul>
+            <li>Pipeline &amp; account management</li>
+            <li>Stakeholder communication</li>
+            <li>Strategic planning &amp; project management</li>
+            <li>Cross-functional collaboration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <hr class="section-rule">
+      <div data-reveal>
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Financial Planning Intern</span> &nbsp;<span class="exp-org">&middot; Northwestern Mutual</span></div>
+            <div class="exp-time">Jan 2023 &ndash; Dec 2024</div>
+          </div>
+          <p>Grew client base 40% year-over-year through strategic networking and data-driven prospecting, improved client portfolio returns through market and ROI analysis across 10+ accounts, and reduced client portfolio risk by 20% (measured by beta coefficients) through scenario modeling with senior advisors.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Treasurer &amp; VP of Finance</span> &nbsp;<span class="exp-org">&middot; Delta Sigma Pi (Upsilon Chi)</span></div>
+            <div class="exp-time">Aug 2024 &ndash; Dec 2025</div>
+          </div>
+          <p>Ran monthly variance analysis and systematic budget tracking across a $20K+ annual budget, improved forecasting accuracy through quarterly financial models presented to the executive board, and built automated Excel dashboards for revenue, expense, and cash flow tracking.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Lacrosse Coach</span> &nbsp;<span class="exp-org">&middot; Vibe / Wise Guys Lacrosse</span></div>
+            <div class="exp-time">Nov 2021 &ndash; 2024</div>
+          </div>
+          <p>Built development plans and strategic game plans grounded in opponent research and performance analysis for 150+ athletes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="resume-band" id="resume">
+  <div class="wrap">
+    <div>
+      <h2>Full resume</h2>
+      <p>Education, complete work history, skills, and certifications in one page.</p>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a class="btn primary" href="Matthew_Franklin_Resume.pdf" target="_blank" rel="noopener">View resume</a>
+      <a class="btn" href="Matthew_Franklin_Resume.pdf" download>Download PDF</a>
+    </div>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-row">
+      <div>Matthew Franklin &middot; Los Angeles, CA</div>
+      <ul class="foot-links">
+        <li><a href="mailto:matthewfranklin01@gmail.com">Email</a></li>
+        <li><a href="https://linkedin.com/in/matthew-franklin-a3763a242" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/MatthewFranklin8/financial-analyst-portfolio" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  items.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
